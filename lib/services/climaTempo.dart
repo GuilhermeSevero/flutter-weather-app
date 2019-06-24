@@ -7,7 +7,7 @@ class ClimaTempo {
   static final String baseUrl = 'http://apiadvisor.climatempo.com.br/api/v1';
   static final String token = 'a9992d30bb29efb00cbd17e579f995f8';
 
-  static Future<int> idCidadePeloName(String cidade, uf) async {
+  static Future<int> idCidadePeloNome(String cidade, uf) async {
     final response = await http.get('$baseUrl/locale/city?name=$cidade&state=$uf&token=$token');
 
     if (response.statusCode == 200) {

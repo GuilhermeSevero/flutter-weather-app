@@ -1,63 +1,63 @@
 class ClimaAtual {
-  final num temperature;
-  final String windDirection;
-  final num windVelocity;
-  final num humidity;
-  final String condition;
-  final num pressure;
-  final String icon;
-  final num sensation;
+  final num temperatura;
+  final String ventoDirecao;
+  final num ventoVelocidade;
+  final num umidade;
+  final String condicao;
+  final num pressao;
+  final String icone;
+  final num sensacaoTermica;
 
   ClimaAtual({
-    this.temperature,
-    this.windDirection,
-    this.windVelocity,
-    this.humidity,
-    this.condition,
-    this.pressure,
-    this.icon,
-    this.sensation,
+    this.temperatura,
+    this.ventoDirecao,
+    this.ventoVelocidade,
+    this.umidade,
+    this.condicao,
+    this.pressao,
+    this.icone,
+    this.sensacaoTermica,
   });
 
   factory ClimaAtual.fromJson(Map<String, dynamic> json) {
     return ClimaAtual(
-      temperature: json['temperature'],
-      windDirection: json['wind_direction'],
-      windVelocity: json['wind_velocity'],
-      humidity: json['humidity'],
-      condition: json['condition'],
-      pressure: json['pressure'],
-      icon: json['icon'],
-      sensation: json['sensation'],
+      temperatura: json['temperature'],
+      ventoDirecao: json['wind_direction'],
+      ventoVelocidade: json['wind_velocity'],
+      umidade: json['humidity'],
+      condicao: json['condition'],
+      pressao: json['pressure'],
+      icone: json['icon'],
+      sensacaoTermica: json['sensation'],
     );
   }
 }
 
 class ClimaHora {
-  final String date;
-  final String dateBR;
-  final num temperature;
-  final String windDirection;
-  final num windVelocity;
-  final num precipitation;
+  final String data;
+  final String dataBR;
+  final num temperatura;
+  final String ventoDirecao;
+  final num ventoVelocidade;
+  final num precipitacao;
 
   ClimaHora({
-    this.date,
-    this.dateBR,
-    this.temperature,
-    this.windDirection,
-    this.windVelocity,
-    this.precipitation,
+    this.data,
+    this.dataBR,
+    this.temperatura,
+    this.ventoDirecao,
+    this.ventoVelocidade,
+    this.precipitacao,
   });
 
   factory ClimaHora.fromJson(Map<String, dynamic> json) {
     return ClimaHora(
-      date: json['date'],
-      dateBR: json['date_br'],
-      temperature: json['temperature']['temperature'],
-      windDirection: json['wind']['direction'],
-      windVelocity: json['wind']['velocity'],
-      precipitation: json['rain']['precipitation'],
+      data: json['date'],
+      dataBR: json['date_br'],
+      temperatura: json['temperature']['temperature'],
+      ventoDirecao: json['wind']['direction'],
+      ventoVelocidade: json['wind']['velocity'],
+      precipitacao: json['rain']['precipitation'],
     );
   }
 }

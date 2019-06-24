@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather_app/models/climaTempo.dart';
+import 'models/climaTempo.dart';
 import 'services/climaTempo.dart';
 import 'components/myChart.dart';
 
@@ -40,15 +40,15 @@ class _MyHomePageState extends State<MyHomePage> {
     if (snapshot.hasData) {
       List<ClimaHora> filtrados = snapshot.data
           .where(
-              (element) => DateTime.parse(element.date).isAfter(DateTime.now()))
+              (element) => DateTime.parse(element.data).isAfter(DateTime.now()))
           .take(15)
           .toList();
 
       return new MyChart(
         data: filtrados
-            .map((ClimaHora element) => element.temperature.toDouble())
+            .map((ClimaHora element) => element.temperatura.toDouble())
             .toList(),
-        labels: filtrados.map((ClimaHora element) => element.dateBR).toList(),
+        labels: filtrados.map((ClimaHora element) => element.dataBR).toList(),
       );
     } else if (snapshot.hasError) {
       return Text("${snapshot.error}");
