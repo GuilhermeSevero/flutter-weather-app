@@ -3,16 +3,17 @@ import 'package:flutter_charts/flutter_charts.dart';
 
 class MyChart extends StatelessWidget {
   ChartData _chartData;
-  final List<double> data;
+  final List<List<double>> data;
   final List<String> labels;
 
   MyChart({@required this.data, @required this.labels}) {
     _chartData = new ChartData()
-      ..dataRowsLegends = ['Temperatura']
-      ..dataRows = [data]
+      ..dataRowsLegends = ['Temperatura', 'Precipitação']
+      ..dataRows = data
       ..xLabels = labels
       ..dataRowsColors = [
         Colors.purple,
+        Colors.blueAccent
       ];
     // ..assignDataRowsDefaultColors();
   }

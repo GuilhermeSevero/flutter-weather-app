@@ -45,9 +45,14 @@ class _MyHomePageState extends State<MyHomePage> {
           .toList();
 
       return new MyChart(
-        data: filtrados
-            .map((ClimaHora element) => element.temperatura.toDouble())
-            .toList(),
+        data: [
+          filtrados
+              .map((ClimaHora element) => element.temperatura.toDouble())
+              .toList(),
+          filtrados
+              .map((ClimaHora element) => element.precipitacao.toDouble())
+              .toList(),
+        ],
         labels: filtrados.map((ClimaHora element) => element.dataBR).toList(),
       );
     } else if (snapshot.hasError) {
