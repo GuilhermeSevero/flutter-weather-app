@@ -5,45 +5,47 @@ class MyChart extends StatelessWidget {
   ChartData _chartData;
   final List<List<double>> data;
   final List<String> labels;
+  final List<String> legends;
 
-  MyChart({@required this.data, @required this.labels}) {
-    _chartData = new ChartData()
-      ..dataRowsLegends = ['Temperatura', 'Precipitação']
+  MyChart({@required this.data, @required this.labels, @required this.legends}) {
+    _chartData = ChartData()
+      ..dataRowsLegends = legends
       ..dataRows = data
       ..xLabels = labels
-      ..dataRowsColors = [
-        Colors.purple,
-        Colors.blueAccent
-      ];
-    // ..assignDataRowsDefaultColors();
+      // ..dataRowsColors = [
+      //   Colors.purple,
+      //   Colors.blueAccent,
+      //   Colors.amber
+      // ];
+      ..assignDataRowsDefaultColors();
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Expanded(
+    return Expanded(
       // expansion inside Column pulls contents |
-      child: new Column(
+      child: Column(
         // this stretch carries | expansion to <--> Expanded children
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          new Expanded(
-            child: new LineChart(
-              painter: new LineChartPainter(),
-              container: new LineChartContainer(
+          Expanded(
+            child: LineChart(
+              painter: LineChartPainter(),
+              container: LineChartContainer(
                 chartData: _chartData, // @required
-                chartOptions: new LineChartOptions(), // @required
+                chartOptions: LineChartOptions(), // @required
               ),
             ), // verticalBarChart, lineChart
           ),
-          new Expanded(
-            child: new VerticalBarChart(
-              painter: new VerticalBarChartPainter(),
-              container: new VerticalBarChartContainer(
-                chartData: _chartData, // @required
-                chartOptions: new VerticalBarChartOptions(), // @required
-              ),
-            ),
-          ),
+          // Expanded(
+          //   child: VerticalBarChart(
+          //     painter: VerticalBarChartPainter(),
+          //     container: VerticalBarChartContainer(
+          //       chartData: _chartData, // @required
+          //       chartOptions: VerticalBarChartOptions(), // @required
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
