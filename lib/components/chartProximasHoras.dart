@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/components/myChart.dart';
-import 'package:flutter_weather_app/models/climaTempo.dart';
-import 'package:flutter_weather_app/services/climaTempo.dart';
+import 'package:flutter_weather_app/models/clima_hora_model.dart';
+import 'package:flutter_weather_app/services/clima_tempo_service.dart';
 
 class ChartProximashoras extends StatefulWidget {
   @override
@@ -20,17 +20,16 @@ class _ChartProximashorasState extends State<ChartProximashoras> {
   Widget buildFutureProximasHoras(
       BuildContext context, AsyncSnapshot<List<ClimaHora>> snapshot) {
     if (snapshot.hasData) {
-      List<List<double>> data = [[], []];
+      List<List<double>> data = [[]];
       List<String> labels = List<String>();
 
       snapshot.data
           .where(
               (element) => DateTime.parse(element.data).isAfter(DateTime.now()))
-          .take(12)
+          .take(17)
           .toList()
           .forEach((element) {
         data[0].add(element.temperatura.toDouble());
-        data[1].add(element.precipitacao.toDouble());
         labels.add(element.dataBR.substring(11));
       });
 
@@ -39,11 +38,10 @@ class _ChartProximashorasState extends State<ChartProximashoras> {
         labels: labels,
         legends: [
           'Temperatura (°C)',
-          'Precipitação (mm)',
         ],
       );
     } else if (snapshot.hasError) {
-      return Text("${snapshot.error}");
+      return Text('${snapshot.error}');
     }
     return CircularProgressIndicator();
   }

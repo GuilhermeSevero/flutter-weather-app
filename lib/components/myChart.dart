@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_charts/flutter_charts.dart';
 
-class MyChart extends StatelessWidget {
-  ChartData _chartData;
+class MyChart extends StatefulWidget {
   final List<List<double>> data;
   final List<String> labels;
   final List<String> legends;
 
-  MyChart({@required this.data, @required this.labels, @required this.legends}) {
+  MyChart({
+    @required this.data,
+    @required this.labels,
+    @required this.legends,
+  });
+
+  @override
+  _MyChartState createState() => _MyChartState(data, labels, legends);
+}
+
+class _MyChartState extends State<MyChart> {
+  ChartData _chartData;
+
+  _MyChartState(data, labels, legends) {
     _chartData = ChartData()
-      ..dataRowsLegends = legends
       ..dataRows = data
       ..xLabels = labels
+      ..dataRowsLegends = legends
       // ..dataRowsColors = [
       //   Colors.purple,
       //   Colors.blueAccent,
@@ -37,15 +49,15 @@ class MyChart extends StatelessWidget {
               ),
             ), // verticalBarChart, lineChart
           ),
-          // Expanded(
-          //   child: VerticalBarChart(
-          //     painter: VerticalBarChartPainter(),
-          //     container: VerticalBarChartContainer(
-          //       chartData: _chartData, // @required
-          //       chartOptions: VerticalBarChartOptions(), // @required
-          //     ),
-          //   ),
-          // ),
+          Expanded(
+            child: VerticalBarChart(
+              painter: VerticalBarChartPainter(),
+              container: VerticalBarChartContainer(
+                chartData: _chartData, // @required
+                chartOptions: VerticalBarChartOptions(), // @required
+              ),
+            ),
+          ),
         ],
       ),
     );

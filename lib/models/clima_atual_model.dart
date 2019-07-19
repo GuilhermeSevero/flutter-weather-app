@@ -1,4 +1,5 @@
 class ClimaAtual {
+  final String data;
   final num temperatura;
   final String ventoDirecao;
   final num ventoVelocidade;
@@ -9,6 +10,7 @@ class ClimaAtual {
   final num sensacaoTermica;
 
   ClimaAtual({
+    this.data,
     this.temperatura,
     this.ventoDirecao,
     this.ventoVelocidade,
@@ -21,6 +23,7 @@ class ClimaAtual {
 
   factory ClimaAtual.fromJson(Map<String, dynamic> json) {
     return ClimaAtual(
+      data: json['date'],
       temperatura: json['temperature'],
       ventoDirecao: json['wind_direction'],
       ventoVelocidade: json['wind_velocity'],
@@ -29,35 +32,6 @@ class ClimaAtual {
       pressao: json['pressure'],
       icone: json['icon'],
       sensacaoTermica: json['sensation'],
-    );
-  }
-}
-
-class ClimaHora {
-  final String data;
-  final String dataBR;
-  final num temperatura;
-  final String ventoDirecao;
-  final num ventoVelocidade;
-  final num precipitacao;
-
-  ClimaHora({
-    this.data,
-    this.dataBR,
-    this.temperatura,
-    this.ventoDirecao,
-    this.ventoVelocidade,
-    this.precipitacao,
-  });
-
-  factory ClimaHora.fromJson(Map<String, dynamic> json) {
-    return ClimaHora(
-      data: json['date'],
-      dataBR: json['date_br'],
-      temperatura: json['temperature']['temperature'],
-      ventoDirecao: json['wind']['direction'],
-      ventoVelocidade: json['wind']['velocity'],
-      precipitacao: json['rain']['precipitation'],
     );
   }
 }
