@@ -24,8 +24,6 @@ class _ChartProximashorasState extends State<ChartProximashoras> {
       List<String> labels = List<String>();
 
       snapshot.data
-          .where(
-              (element) => DateTime.parse(element.data).isAfter(DateTime.now()))
           .take(17)
           .toList()
           .forEach((element) {

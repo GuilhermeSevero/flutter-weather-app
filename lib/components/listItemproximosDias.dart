@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/components/dialogClimaDia.dart';
 import '../models/clima_dia_model.dart';
 
 class ListItemProximosDias extends StatelessWidget {
@@ -31,6 +32,16 @@ class ListItemProximosDias extends StatelessWidget {
                 '${climaDia.temperatura.min}/${climaDia.temperatura.max} ºC',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
+              Row(
+                children: <Widget>[
+                  Icon(Icons.cloud_queue),
+                  VerticalDivider(width: 8),
+                  Text(
+                    '${climaDia.chuva.probabilidade}%',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
               Text(
                 '${climaDia.dataBR}',
                 style: TextStyle(color: Colors.grey, fontSize: 14.0),
@@ -44,6 +55,12 @@ class ListItemProximosDias extends StatelessWidget {
               style: TextStyle(color: Colors.grey, fontSize: 15.0),
             ),
           ),
+          onTap: () {
+            showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (BuildContext context) => DialogClimaDia(climaDia));
+          },
         ),
       ],
     );

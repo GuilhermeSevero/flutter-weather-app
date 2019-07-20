@@ -20,7 +20,7 @@ class ListItemProximasHoras extends StatelessWidget {
             backgroundColor: Colors.white,
             radius: 25.0,
             child: Text(
-              '${climaHora.temperatura} ºC',
+              '${climaHora.temperatura}º',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
             ),
           ),
